@@ -13,15 +13,18 @@ $statement = $pdo->query("SELECT * FROM students");
 //Bring the specific column
 // $studenTList = $statement->fetchAll(PDO::FETCH_COLUMN, 1);
 
+$studenTList = [];
 
 while($studentData = $statement->fetch(PDO::FETCH_ASSOC)){
-  var_dump($studentData['name']);
+  // var_dump($studentData['name']);
 
-  $student = new Student(
+  $studenTList = new Student(
     $studentData['id'],
     $studentData['name'],
     new \DateTimeImmutable($studentData['birth_date'])
   );
 
-  echo $student->age();
+  // echo $student->age();
 }
+
+var_dump($studenTList);
